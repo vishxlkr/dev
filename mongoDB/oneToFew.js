@@ -1,14 +1,16 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
 
-main()
-   .then(() => console.log("connection successful"))
-   .catch((err) => console.log(err));
+// connecting the datebase
+const connectDB = async () => {
+   try {
+      await mongoose.connect("mongodb://127.0.0.1:27017/relationDemo");
+      console.log("MongoDB connection successful");
+   } catch (err) {
+      console.error("MongoDB connection error:", err);
+   }
+};
 
-async function main() {
-   await mongoose.connect("mongodb://127.0.0.1:27017/relationDemo");
-}
-
+// user schema design
 const userSchema = new Schema({
    username: String,
    addresses: [
@@ -19,8 +21,10 @@ const userSchema = new Schema({
    ],
 });
 
+// created user model
 const User = mongoose.model("User", userSchema);
 
+// adding a user
 const addUsers = async () => {
    let user1 = new User({
       username: "sherlockholmes",
@@ -38,4 +42,8 @@ const addUsers = async () => {
    console.log(result);
 };
 
-addUsers();
+// run
+const start = async () => {
+   await connectDB();
+   await addUsers();
+};
