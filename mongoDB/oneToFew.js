@@ -1,3 +1,5 @@
+// ONE TO FEW mongo db design
+
 import mongoose from "mongoose";
 
 // connecting the datebase
