@@ -49,3 +49,5 @@ const start = async () => {
    await connectDB();
    await addUsers();
 };
+
+start();
