@@ -1,4 +1,4 @@
-// ONE TO FEW mongo db design
+// ONE TO FEW mongoDB design
 
 import mongoose from "mongoose";
 
@@ -13,7 +13,7 @@ const connectDB = async () => {
 };
 
 // user schema design
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
    username: String,
    addresses: [
       {
@@ -40,8 +40,8 @@ const addUsers = async () => {
 
    user1.addresses.push({ location: "P32 Wall Street", city: "London" });
 
-   let result = await user1.save();
-   console.log(result);
+   let result = await user1.save(); // saving the user1
+   console.log(result); // log the user
 };
 
 // run
